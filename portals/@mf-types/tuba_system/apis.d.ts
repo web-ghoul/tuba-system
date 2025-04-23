@@ -1,0 +1,3 @@
+
+    export type RemoteKeys = 'tuba_system/Header' | 'tuba_system/Footer' | 'tuba_system/PrimaryButton' | 'tuba_system/useCookie' | 'tuba_system/styles' | 'tuba_system/config';
+    type PackageType<T> = T extends 'tuba_system/config' ? typeof import('tuba_system/config') :T extends 'tuba_system/styles' ? typeof import('tuba_system/styles') :T extends 'tuba_system/useCookie' ? typeof import('tuba_system/useCookie') :T extends 'tuba_system/PrimaryButton' ? typeof import('tuba_system/PrimaryButton') :T extends 'tuba_system/Footer' ? typeof import('tuba_system/Footer') :T extends 'tuba_system/Header' ? typeof import('tuba_system/Header') :any;
