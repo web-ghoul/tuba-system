@@ -11,6 +11,23 @@ const useLang = () => {
     document.body.classList.remove(lang === "ar" ? "en" : "ar");
     document.body.classList.add(lang);
     document.title = t("title");
+    const favicon = document.querySelector(
+      "link[rel~='icon']"
+    ) as HTMLLinkElement;
+    if (favicon) {
+      favicon.href =
+        lang === "ar"
+          ? "./images/logo_arabic_dark.svg"
+          : "./images/logo_english_dark.svg";
+    } else {
+      const newFavicon = document.createElement("link");
+      newFavicon.rel = "icon";
+      newFavicon.href =
+        lang === "ar"
+          ? "./images/logo_arabic_dark.svg"
+          : "./images/logo_english_dark.svg";
+      document.head.appendChild(newFavicon);
+    }
   };
 
   const handleGetLang = () => {

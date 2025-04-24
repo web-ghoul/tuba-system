@@ -49,7 +49,7 @@ export default defineConfig({
     // You need to set a unique value that is not equal to other applications
     uniqueName: "tuba_system",
     // publicPath must be configured if using manifest
-    publicPath: `${process.env.REACT_APP_URL}`,
+    publicPath: `${process.env.REACT_APP_URL}/`,
   },
 
   experiments: {
@@ -100,7 +100,9 @@ export default defineConfig({
     new rspack.HtmlRspackPlugin({
       template: "./index.html",
     }),
-    new ModuleFederationPlugin(mfConfig),
+    new ModuleFederationPlugin(
+      mfConfig(`${process.env.REACT_APP_PORTALS_REMOTE}`)
+    ),
     new DefinePlugin(envKeys),
     isDev ? new RefreshPlugin() : null,
   ].filter(Boolean),

@@ -1,8 +1,8 @@
-export const mfConfig = {
+export const mfConfig = (portals:string)=>({
   name: "tuba_system",
   filename: "remoteEntry.js",
   remotes: {
-    portals: `${process.env.REACT_APP_PORTALS_REMOTE}`,
+    portals,
   },
   exposes: {
     "./Header": "./src/components/Header.tsx",
@@ -22,4 +22,4 @@ export const mfConfig = {
     "react-i18next": { singleton: true, requiredVersion: undefined },
     i18next: { singleton: true, requiredVersion: undefined },
   },
-};
+});
