@@ -1,20 +1,21 @@
 import { useTranslation } from "react-i18next";
 
 const useLang = () => {
-  const { i18n } = useTranslation();
-  const langStorage = `${process.env.REACT_APP_LANG_STORAGE}`
-  
+  const { t, i18n } = useTranslation("index");
+  const langStorage = `${process.env.REACT_APP_LANG_STORAGE}`;
+
   const applyHtmlAttributes = (lang: string) => {
     const html = document.documentElement;
     html.lang = lang;
     html.dir = lang === "ar" ? "rtl" : "ltr";
-    document.body.classList.remove(lang==='ar'?'en':'ar')
-    document.body.classList.add(lang)
+    document.body.classList.remove(lang === "ar" ? "en" : "ar");
+    document.body.classList.add(lang);
+    document.title = t("title");
   };
 
-  const handleGetLang=()=>{
-    return i18n.language
-  }
+  const handleGetLang = () => {
+    return i18n.language;
+  };
 
   const handleChangeLang = () => {
     let lang = localStorage.getItem(langStorage);
@@ -38,7 +39,7 @@ const useLang = () => {
     applyHtmlAttributes(lang);
   };
 
-  return { handleChangeLang, handleSetLang ,handleGetLang};
+  return { handleChangeLang, handleSetLang, handleGetLang };
 };
 
 export default useLang;
