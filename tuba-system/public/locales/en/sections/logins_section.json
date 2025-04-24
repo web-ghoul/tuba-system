@@ -1,0 +1,22 @@
+{
+  "title": "Welcome to Tuba - Your Trusted Health Platform!",
+  "description": "Choose the account type that matches your role",
+  "logins": [
+    {
+      "title": "Company",
+      "description": "Manage your healthcare services"
+    },
+    {
+      "title": "Medical Service Provider",
+      "description": "Manage your healthcare services"
+    },
+    {
+      "title": "Medical Reviewer",
+      "description": "Manage your healthcare services"
+    },
+    {
+      "title": "Financial Reviewer",
+      "description": "Manage your healthcare services"
+    }
+  ]
+}

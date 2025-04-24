@@ -37,6 +37,11 @@ export default defineConfig({
     static: {
       directory: path.resolve(__dirname, "public"),
     },
+    headers: {
+      "Access-Control-Allow-Origin": "http://localhost:4001",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    },
     watchFiles: [path.resolve(__dirname, "src")],
   },
 

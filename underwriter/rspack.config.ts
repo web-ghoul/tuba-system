@@ -1,20 +1,13 @@
 import * as path from "node:path";
 import { defineConfig } from "@rspack/cli";
-import { DefinePlugin, rspack } from "@rspack/core";
+import { rspack } from "@rspack/core";
 import * as RefreshPlugin from "@rspack/plugin-react-refresh";
 import { ModuleFederationPlugin } from "@module-federation/enhanced/rspack";
+
+
 import { mfConfig } from "./module-federation.config";
-import * as dotenv from "dotenv";
-dotenv.config();
 
 const isDev = process.env.NODE_ENV === "development";
-
-const envKeys = Object.keys(process.env)
-  .filter((key) => key.startsWith("REACT_APP_"))
-  .reduce((acc, key) => {
-    acc[`process.env.${key}`] = JSON.stringify(process.env[key]);
-    return acc;
-  }, {} as Record<string, string>);
 
 // Target browsers, see: https://github.com/browserslist/browserslist
 const targets = ["chrome >= 87", "edge >= 88", "firefox >= 78", "safari >= 14"];
@@ -29,24 +22,15 @@ export default defineConfig({
   },
 
   devServer: {
-    open: true,
-    port: 4001,
+    port: 4004,
     historyApiFallback: true,
-    static: {
-      directory: path.resolve(__dirname, "public"),
-    },
-    headers: {
-      "Access-Control-Allow-Origin": "http://localhost:4000",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
-    },
     watchFiles: [path.resolve(__dirname, "src")],
   },
   output: {
     // You need to set a unique value that is not equal to other applications
-    uniqueName: "portals",
+    uniqueName: "underwriter",
     // publicPath must be configured if using manifest
-    publicPath: "http://localhost:4001/",
+    publicPath: "http://localhost:4004/",
   },
 
   experiments: {
@@ -95,7 +79,6 @@ export default defineConfig({
       template: "./index.html",
     }),
     new ModuleFederationPlugin(mfConfig),
-    new DefinePlugin(envKeys),
     isDev ? new RefreshPlugin() : null,
   ].filter(Boolean),
   optimization: {

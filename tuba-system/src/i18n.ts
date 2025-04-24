@@ -10,12 +10,10 @@ i18n
   .init({
     supportedLngs: ['en', 'ar'],
     fallbackLng: 'ar',
-    detection: {
-      order: ['path', 'cookie', 'htmlTag', 'localStorage', 'subdomain'],
-      caches: ['cookie'],
-    },
+    ns: ['sections/logins_section'],
     backend: {
-      loadPath: './locales/{{lng}}/{{ns}}.json',
+      loadPath: `http://localhost:4000/locales/{{lng}}/{{ns}}.json`,
+      crossDomain: true,
     },
     interpolation: {
       escapeValue: false,
