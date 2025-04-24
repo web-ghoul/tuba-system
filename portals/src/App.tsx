@@ -1,12 +1,13 @@
 import ReactDOM from "react-dom/client";
-import SideSection from "./sections/SideSection";
+import SideAuthSection from "tuba_system/SideAuthSection";
 import LoginsSection from "./sections/LoginsSection";
 import "./index.css";
 
 const App = () => {
+  console.log(process.env.REACT_APP_URL)
   return (
     <main>
-      <SideSection />
+      <SideAuthSection />
       <LoginsSection />
     </main>
   );

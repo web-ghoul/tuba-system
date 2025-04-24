@@ -28,8 +28,12 @@
   },
   "dependencies": {
     "@module-federation/enhanced": "^0.8.9",
+    "i18next": "^25.0.1",
+    "i18next-browser-languagedetector": "^8.0.5",
+    "i18next-http-backend": "^3.0.2",
     "portals": "file:",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-i18next": "^15.5.1"
   }
 }

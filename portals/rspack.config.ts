@@ -1,6 +1,6 @@
 import * as path from "node:path";
 import { defineConfig } from "@rspack/cli";
-import { DefinePlugin,rspack } from "@rspack/core";
+import { DefinePlugin, rspack } from "@rspack/core";
 import * as RefreshPlugin from "@rspack/plugin-react-refresh";
 import { ModuleFederationPlugin } from "@module-federation/enhanced/rspack";
 import { mfConfig } from "./module-federation.config";
@@ -10,7 +10,7 @@ dotenv.config();
 const isDev = process.env.NODE_ENV === "development";
 
 const envKeys = Object.keys(process.env)
-  .filter((key) => key.startsWith("VITE_"))
+  .filter((key) => key.startsWith("REACT_APP_"))
   .reduce((acc, key) => {
     acc[`process.env.${key}`] = JSON.stringify(process.env[key]);
     return acc;

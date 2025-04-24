@@ -7,4 +7,8 @@ interface ButtonTypes {
   func?: () => void;
 }
 
-export type { ButtonTypes };
+interface LangSwitchTypes {
+  langStorage:string
+}
+
+export type { ButtonTypes,LangSwitchTypes };

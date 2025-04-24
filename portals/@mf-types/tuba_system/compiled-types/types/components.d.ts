@@ -5,4 +5,7 @@ interface ButtonTypes {
     link?: string;
     func?: () => void;
 }
-export type { ButtonTypes };
+interface LangSwitchTypes {
+    langStorage: string;
+}
+export type { ButtonTypes, LangSwitchTypes };

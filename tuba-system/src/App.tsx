@@ -7,6 +7,7 @@ import { ThemeProvider } from "@mui/material";
 import "./index.css";
 
 const App = () => {
+  console.log(process.env.REACT_APP_URL);
   return (
     <div className="mt-10 text-3xl mx-auto max-w-6xl">
       <Header />

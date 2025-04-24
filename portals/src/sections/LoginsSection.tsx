@@ -1,9 +1,10 @@
 import LoginCard from "../components/LoginCard";
-import PrimaryButton from "tuba_system/PrimaryButton"
+import LangSwitch from "tuba_system/LangSwitch";
 
 const LoginsSection = () => {
   return (
     <div className="logins_parent">
+      <LangSwitch />
       <div className="content">
         <h1>أهلاً وسهلاً في طوبي - منصتك الصحية الموثوقة!</h1>
         <h6>اختر نوع الحساب اللي يناسب دورك</h6>
@@ -30,8 +31,6 @@ const LoginsSection = () => {
           link=""
         />
       </div>
-      {/* <button className="btn">ابدأ تسجيل الدخول</button> */}
-      <PrimaryButton>ابدأ تسجيل الدخول</PrimaryButton>
     </div>
   );
 };

@@ -11,7 +11,7 @@ import { mfConfig } from "./module-federation.config";
 const isDev = process.env.NODE_ENV === "development";
 
 const envKeys = Object.keys(process.env)
-  .filter((key) => key.startsWith("VITE_")) // Only include variables meant for the client
+  .filter((key) => key.startsWith("REACT_APP_")) // Only include variables meant for the client
   .reduce((acc, key) => {
     acc[`process.env.${key}`] = JSON.stringify(process.env[key]);
     return acc;
