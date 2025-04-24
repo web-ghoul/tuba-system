@@ -7,7 +7,7 @@ import { mfConfig } from "./module-federation.config";
 import * as dotenv from "dotenv";
 dotenv.config();
 
-const isDev = process.env.NODE_ENV === "development";
+const isDev = process.env.REACT_APP_NODE_ENV === "development";
 
 const envKeys = Object.keys(process.env)
   .filter((key) => key.startsWith("REACT_APP_"))
@@ -36,7 +36,7 @@ export default defineConfig({
       directory: path.resolve(__dirname, "public"),
     },
     headers: {
-      "Access-Control-Allow-Origin": "http://localhost:4000",
+      "Access-Control-Allow-Origin": `${process.env.REACT_APP_TUBA_SYSTEM_URL}`,
       "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type, Authorization",
     },
@@ -46,7 +46,7 @@ export default defineConfig({
     // You need to set a unique value that is not equal to other applications
     uniqueName: "portals",
     // publicPath must be configured if using manifest
-    publicPath: "http://localhost:4001/",
+    publicPath: `${process.env.REACT_APP_URL}`,
   },
 
   experiments: {

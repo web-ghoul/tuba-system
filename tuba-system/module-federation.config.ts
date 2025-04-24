@@ -2,7 +2,7 @@ export const mfConfig = {
   name: "tuba_system",
   filename: "remoteEntry.js",
   remotes: {
-    portals: `portals@http://localhost:4001/remoteEntry.js`,
+    portals: `${process.env.REACT_APP_PORTALS_REMOTE}`,
   },
   exposes: {
     "./Header": "./src/components/Header.tsx",
