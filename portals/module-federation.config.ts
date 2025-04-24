@@ -1,11 +1,11 @@
-export const mfConfig = {
+export const mfConfig = (tuba_system: string) => ({
   name: "portals",
   filename: "remoteEntry.js",
-  remotes:{
-    tuba_system: `${process.env.REACT_APP_TUBA_SYSTEM_REMOTE}`,
+  remotes: {
+    tuba_system,
   },
   exposes: {
-    "./App": "./src/App", 
+    "./App": "./src/App",
   },
   shared: ["react", "react-dom"],
-};
+});

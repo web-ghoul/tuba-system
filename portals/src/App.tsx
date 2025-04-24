@@ -4,11 +4,14 @@ import LoginsSection from "./sections/LoginsSection";
 import i18n from "tuba_system/i18n";
 import "./index.css";
 import { I18nextProvider } from "react-i18next";
+import SafeComponent from "./SafeComponent ";
 
 const App = () => {
   return (
     <main>
-      <SideAuthSection />
+      <SafeComponent>
+        <SideAuthSection />
+      </SafeComponent>
       <LoginsSection />
     </main>
   );

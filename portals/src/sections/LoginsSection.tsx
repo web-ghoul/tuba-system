@@ -1,14 +1,20 @@
 import { useTranslation } from "react-i18next";
 import LoginCard from "../components/LoginCard";
 import LangSwitch from "tuba_system/LangSwitch";
+import SafeComponent from "../SafeComponent ";
 
 const LoginsSection = () => {
   const { t } = useTranslation("sections/logins_section");
-  const logins = t("logins", { returnObjects: true }) as Array<{ title: string; description: string }>;
+  const logins = t("logins", { returnObjects: true }) as Array<{
+    title: string;
+    description: string;
+  }>;
 
   return (
     <div className="logins_parent">
-      <LangSwitch />
+      <SafeComponent>
+        <LangSwitch />
+      </SafeComponent>
       <div className="content">
         <h1>{t("title")}</h1>
         <h6>{t("description")}</h6>
