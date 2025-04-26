@@ -5,8 +5,9 @@ import PrimaryButton from "./components/PrimaryButton";
 import { theme } from "./theme";
 import { ThemeProvider } from "@mui/material";
 import "./index.css";
-import { I18nextProvider, useTranslation } from "react-i18next";
+import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ root.render(
   <ThemeProvider theme={theme}>
     <I18nextProvider i18n={i18n}>
       <App />
+      <Toaster />
     </I18nextProvider>
   </ThemeProvider>
 );

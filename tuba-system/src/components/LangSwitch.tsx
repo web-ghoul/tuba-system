@@ -3,9 +3,10 @@ import { LanguageOutlined } from "@mui/icons-material";
 import useLang from "../hooks/useLang";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import toast from "react-hot-toast";
 
 const LangSwitch = () => {
-  const { t,i18n } = useTranslation("components/lang_switch");
+  const { t, i18n } = useTranslation("components/lang_switch");
   const { handleChangeLang, handleGetLang, handleSetLang } = useLang();
   const lang = handleGetLang();
 
