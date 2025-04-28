@@ -2,10 +2,10 @@
   "name": "company",
   "version": "0.0.1",
   "scripts": {
-    "build": "NODE_ENV=production rspack build",
-    "build:dev": "NODE_ENV=development rspack build",
+    "build": "cross-env NODE_ENV=production rspack build",
+    "build:dev": "cross-env NODE_ENV=development rspack build",
     "build:start": "cd dist && rspack serve",
-    "dev": "NODE_ENV=development rspack serve"
+    "dev": "cross-env NODE_ENV=development rspack serve"
   },
   "devDependencies": {
     "@rspack/cli": "~1.2.0",
@@ -26,8 +26,10 @@
   "dependencies": {
     "@module-federation/enhanced": "^0.8.9",
     "company": "file:",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.5.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.5.2"
   }
 }

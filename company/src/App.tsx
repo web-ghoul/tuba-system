@@ -1,14 +1,15 @@
 import ReactDOM from "react-dom/client";
-
 import "./index.css";
+import { RouterProvider } from "react-router";
+import { router } from "./router";
+import Tuba from "./Tuba";
 
 const App = () => (
-  <div className="mt-10 text-3xl mx-auto max-w-6xl">
-    <div>Name: company</div>
-    <div>Framework: react-19</div>
-  </div>
+  <Tuba/>
 );
+
+export default App;
 
 const root = ReactDOM.createRoot(document.getElementById("app") as HTMLElement);
 
-root.render(<App />);
+root.render(<RouterProvider router={router} />);

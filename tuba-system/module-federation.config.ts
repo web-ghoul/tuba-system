@@ -1,8 +1,18 @@
-export const mfConfig = (portals:string)=>({
+export const mfConfig = (
+  portals: string,
+  company: string,
+  provider: string,
+  reviewer: string,
+  underwriter: string
+) => ({
   name: "tuba_system",
   filename: "remoteEntry.js",
   remotes: {
     portals,
+    company,
+    provider,
+    reviewer,
+    underwriter,
   },
   exposes: {
     "./Header": "./src/components/Header.tsx",
@@ -21,7 +31,7 @@ export const mfConfig = (portals:string)=>({
     react: { singleton: true, requiredVersion: undefined },
     "react-dom": { singleton: true, requiredVersion: undefined },
     "react-i18next": { singleton: true, requiredVersion: undefined },
-    "react-hot-toast": { singleton: true, requiredVersion: "^2.5.2" }, 
     i18next: { singleton: true, requiredVersion: undefined },
+    "react-hot-toast": { singleton: true, requiredVersion: "^2.5.2" },
   },
 });

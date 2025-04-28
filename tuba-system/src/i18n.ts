@@ -11,6 +11,8 @@ i18n
     lng: "ar",
     supportedLngs: ["ar", "en"],
     fallbackLng: "ar",
+    ns: ["components/header"], 
+    defaultNS: "components/header",
     backend: {
       loadPath: `${process.env.REACT_APP_URL}/locales/{{lng}}/{{ns}}.json`,
       crossDomain: true,
