@@ -3,7 +3,7 @@ import { LanguageOutlined } from "@mui/icons-material";
 import useLang from "../hooks/useLang";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import toast from "react-hot-toast";
+import { handleToaster } from "../functions/handleToaster";
 
 const LangSwitch = () => {
   const { t, i18n } = useTranslation("components/lang_switch");

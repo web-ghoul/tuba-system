@@ -1,17 +1,17 @@
 import * as path from "node:path";
 import { defineConfig } from "@rspack/cli";
 import { DefinePlugin, rspack } from "@rspack/core";
-import * as RefreshPlugin from "@rspack/plugin-react-refresh";
+import RefreshPlugin from "@rspack/plugin-react-refresh";
 import { ModuleFederationPlugin } from "@module-federation/enhanced/rspack";
 import * as dotenv from "dotenv";
 dotenv.config();
 
 import { mfConfig } from "./module-federation.config";
 
-const isDev = process.env.REACT_APP_NODE_ENV === "development";
+const isDev = process.env.REACT_APP_MODE_APP === "development";
 
 const envKeys = Object.keys(process.env)
-  .filter((key) => key.startsWith("REACT_APP_")) // Only include variables meant for the client
+  .filter((key) => key.startsWith("REACT_APP_")) 
   .reduce((acc, key) => {
     acc[`process.env.${key}`] = JSON.stringify(process.env[key]);
     return acc;
@@ -22,6 +22,7 @@ const targets = ["chrome >= 87", "edge >= 88", "firefox >= 78", "safari >= 14"];
 
 export default defineConfig({
   context: __dirname,
+
   entry: {
     main: "./src/index.ts",
   },
@@ -38,10 +39,18 @@ export default defineConfig({
       directory: path.resolve(__dirname, "public"),
     },
     headers: {
-      "Access-Control-Allow-Origin": `${process.env.REACT_APP_PORTALS_URL}`,
+      "Access-Control-Allow-Origin": `*`,
       "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type, Authorization",
     },
+    proxy: [
+      {
+        context: ["/api"],
+        target: "http://localhost:5000",
+        changeOrigin: true,
+        secure: false,
+      },
+    ],
     watchFiles: [path.resolve(__dirname, "src")],
   },
 
@@ -101,7 +110,13 @@ export default defineConfig({
       template: "./index.html",
     }),
     new ModuleFederationPlugin(
-      mfConfig(`${process.env.REACT_APP_PORTALS_REMOTE}`)
+      mfConfig(
+        `${process.env.REACT_APP_PORTALS_REMOTE}`,
+        `${process.env.REACT_APP_COMPANY_REMOTE}`,
+        `${process.env.REACT_APP_PROVIDER_REMOTE}`,
+        `${process.env.REACT_APP_REVIEWER_REMOTE}`,
+        `${process.env.REACT_APP_UNDERWRITER_REMOTE}`
+      )
     ),
     new DefinePlugin(envKeys),
     isDev ? new RefreshPlugin() : null,

@@ -7,7 +7,7 @@ import { mfConfig } from "./module-federation.config";
 import * as dotenv from "dotenv";
 dotenv.config();
 
-const isDev = process.env.REACT_APP_NODE_ENV === "development";
+const isDev = process.env.REACT_APP_MODE_ENV === "development";
 
 const envKeys = Object.keys(process.env)
   .filter((key) => key.startsWith("REACT_APP_"))
@@ -36,7 +36,7 @@ export default defineConfig({
       directory: path.resolve(__dirname, "public"),
     },
     headers: {
-      "Access-Control-Allow-Origin": `${process.env.REACT_APP_TUBA_SYSTEM_URL}`,
+      "Access-Control-Allow-Origin": `*`,
       "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type, Authorization",
     },
@@ -95,7 +95,13 @@ export default defineConfig({
       template: "./index.html",
     }),
     new ModuleFederationPlugin(
-      mfConfig(`${process.env.REACT_APP_TUBA_SYSTEM_REMOTE}`)
+      mfConfig(
+        `${process.env.REACT_APP_TUBA_SYSTEM_REMOTE}`,
+        `${process.env.REACT_APP_COMPANY_REMOTE}`,
+        `${process.env.REACT_APP_PROVIDER_REMOTE}`,
+        `${process.env.REACT_APP_REVIEWER_REMOTE}`,
+        `${process.env.REACT_APP_UNDERWRITER_REMOTE}`
+      )
     ),
     new DefinePlugin(envKeys),
     isDev ? new RefreshPlugin() : null,

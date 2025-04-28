@@ -4,7 +4,7 @@ import { PrimaryContainer } from "../mui/containers/PrimaryContainer";
 import { useTranslation } from "react-i18next";
 
 const Footer = () => {
-  const {t} =  useTranslation("footer")
+  const {t} =  useTranslation("components/footer")
   
   return (
     <Box
